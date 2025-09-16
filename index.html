@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norah Ngobeni - AI & Technology Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #96ceb4 75%, #feca57 100%);
+        }
+        
+        .tech-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, #ff6b6b 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #4ecdc4 2px, transparent 2px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+            border-radius: 4px;
+            animation: fillBar 2s ease-in-out;
+        }
+        
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+        
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5), 0 0 40px rgba(78, 205, 196, 0.3);
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neonPulse {
+            from { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5), 0 0 40px rgba(78, 205, 196, 0.3); }
+            to { box-shadow: 0 0 30px rgba(255, 107, 107, 0.8), 0 0 60px rgba(78, 205, 196, 0.5); }
+        }
+        
+        .holographic {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff);
+            background-size: 400% 400%;
+            animation: holographicShift 4s ease infinite;
+        }
+        
+        @keyframes holographicShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .particle-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 6s linear infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        .morphing-shape {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: morphing 8s ease-in-out infinite;
+        }
+        
+        @keyframes morphing {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+        
+        .skill-orb {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-orb::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 107, 107, 0.3), rgba(78, 205, 196, 0.3), transparent);
+            animation: rotate 3s linear infinite;
+        }
+        
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+        
+        .skill-orb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+        
+        .cyber-grid {
+            background-image: 
+                linear-gradient(rgba(255, 107, 107, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(78, 205, 196, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+        
+        .data-stream {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #4ecdc4, transparent);
+            animation: dataFlow 2s linear infinite;
+        }
+        
+        @keyframes dataFlow {
+            0% { transform: translateY(-100px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(calc(100vh + 100px)); opacity: 0; }
+        }
+        
+        .project-card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        
+        .project-card-3d:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid #ff6b6b;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #ff6b6b; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-20 relative overflow-hidden">
+        <div class="tech-pattern absolute inset-0 opacity-10"></div>
+        <div class="particle-bg">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 0.5s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 1.5s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 2.5s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 2.8s;"></div>
+        </div>
+        <div class="cyber-grid absolute inset-0 opacity-5"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center">
+                <div class="relative inline-block">
+                    <div id="header-picture-container" class="w-32 h-32 mx-auto mb-6 holographic rounded-full flex items-center justify-center text-6xl floating-icon neon-glow morphing-shape">
+                        <span id="header-placeholder"></span>
+                        <img id="header-image" class="w-full h-full rounded-full object-cover hidden" alt="Norah Ngobeni">
+                    </div>
+                    <div class="absolute bottom-2 right-2">
+                        <label for="header-upload" class="bg-white p-2 rounded-full shadow-lg cursor-pointer hover:bg-gray-50 transition-all duration-300 transform hover:scale-110">
+                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </label>
+                        <input type="file" id="header-upload" accept="image/*" class="hidden" onchange="handleHeaderImageUpload(event)">
+                    </div>
+                </div>
+                <h1 class="text-5xl font-bold mb-4 typing-animation">Hi, I'm Norah Ngobeni</h1>
+                <p class="text-xl mb-6 opacity-90">Exploring AI and Technology to Build Creative and Practical Solutions</p>
+                <div class="flex justify-center space-x-4">
+                    <span class="px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm">AI Enthusiast</span>
+                    <span class="px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm">Technology Professional</span>
+                    <span class="px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm">Problem Solver</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="glass-morphism shadow-lg sticky top-0 z-50 backdrop-blur-md">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-1 py-4">
+                <button onclick="showTab('about')" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all duration-300 tab-active" id="about-tab">About Me</button>
+                <button onclick="showTab('skills')" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-gray-100" id="skills-tab">Skills</button>
+                <button onclick="showTab('projects')" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-gray-100" id="projects-tab">Projects</button>
+                <button onclick="showTab('education')" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-gray-100" id="education-tab">Education</button>
+                <button onclick="showTab('certifications')" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-gray-100" id="certifications-tab">Certifications</button>
+                <button onclick="showTab('resume')" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-gray-100" id="resume-tab">Resume</button>
+                <button onclick="showTab('contact')" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-gray-100" id="contact-tab">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- About Me Tab -->
+        <div id="about-content" class="tab-content">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">About Me</h2>
+                
+                <!-- Profile Picture Section -->
+                <div class="text-center mb-12">
+                    <div class="relative inline-block">
+                        <div id="profile-picture-container" class="w-48 h-48 mx-auto mb-6 holographic morphing-shape flex items-center justify-center text-6xl shadow-2xl neon-glow cursor-pointer" onclick="openProfileModal()">
+                            <span id="profile-placeholder"></span>
+                            <img id="profile-image" class="w-full h-full rounded-full object-cover hidden" alt="Norah Ngobeni">
+                        </div>
+                        <div class="absolute bottom-2 right-2">
+                            <label for="profile-upload" class="bg-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-gray-50 transition-all duration-300 transform hover:scale-110">
+                                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </label>
+                            <input type="file" id="profile-upload" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Fullscreen Profile Modal -->
+                <div id="profile-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
+                    <div class="relative max-w-4xl max-h-full">
+                        <button onclick="closeProfileModal()" class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 z-10 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center">×</button>
+                        <img id="profile-modal-image" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl" alt="Norah Ngobeni - Fullscreen">
+                        <div id="profile-modal-placeholder" class="w-96 h-96 bg-gray-800 rounded-lg flex items-center justify-center text-8xl"></div>
+                    </div>
+                </div>
+
+                <!-- Professional Summary -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg mb-12 card-hover">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Professional Summary</h3>
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
+                            I'm a motivated technology professional with a Diploma in Information Technology from the Vaal University of Technology. My studies provided me with a strong foundation in IT systems, problem-solving, and analytical thinking. I recently completed the AI Bootcamp with CAPACITI, gaining hands-on experience in building AI-powered tools including chatbots, content generators, sentiment analysis dashboards, and bias audits through agile teamwork. I'm passionate about using artificial intelligence and machine learning to solve real-world problems in education, healthcare, and accessibility. My goal is to grow as an AI/ML specialist and contribute to impactful projects that improve lives and communities.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Key Highlights -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-lg card-hover text-center">
+                        <div class="text-4xl mb-4">🎓</div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-800">Educational Foundation</h3>
+                        <p class="text-gray-600 text-sm">Diploma in Information Technology from Vaal University of Technology with strong foundations in IT systems and analytical thinking.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-lg card-hover text-center">
+                        <div class="text-4xl mb-4">🤖</div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-800">AI Specialization</h3>
+                        <p class="text-gray-600 text-sm">Completed AI Bootcamp with CAPACITI, building chatbots, content generators, and sentiment analysis dashboards through agile teamwork.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-lg card-hover text-center">
+                        <div class="text-4xl mb-4">💡</div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-800">Passion & Vision</h3>
+                        <p class="text-gray-600 text-sm">Passionate about using AI and ML to solve real-world problems in education, healthcare, and accessibility sectors.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-lg card-hover text-center">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-800">Career Goals</h3>
+                        <p class="text-gray-600 text-sm">Growing as an AI/ML specialist to contribute to impactful projects that improve lives and communities worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Tab -->
+        <div id="skills-content" class="tab-content hidden relative">
+            <div class="cyber-grid absolute inset-0 opacity-5"></div>
+            <div class="max-w-6xl mx-auto relative z-10">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Technical Skills</h2>
+                <div class="flex justify-center mb-12">
+                    <div class="grid grid-cols-3 md:grid-cols-6 gap-8">
+                        <div class="skill-orb holographic neon-glow">🧠</div>
+                        <div class="skill-orb holographic neon-glow">✨</div>
+                        <div class="skill-orb holographic neon-glow">📊</div>
+                        <div class="skill-orb holographic neon-glow">🛠️</div>
+                        <div class="skill-orb holographic neon-glow">🏗️</div>
+                        <div class="skill-orb holographic neon-glow">⚖️</div>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-morphism p-6 rounded-2xl shadow-lg card-hover border border-purple-200">
+                        <div class="text-3xl mb-4">🧠</div>
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">AI Fundamentals</h3>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li>• ML, NLP, LLMs, Neural Networks</li>
+                            <li>• Computer Vision concepts</li>
+                            <li>• AI vs ML vs Deep Learning</li>
+                            <li>• Real-world AI applications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass-morphism p-6 rounded-2xl shadow-lg card-hover border border-purple-200">
+                        <div class="text-3xl mb-4">✨</div>
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Generative AI</h3>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li>• AI content generators</li>
+                            <li>• Prompt engineering & optimization</li>
+                            <li>• Input validation & filtering</li>
+                            <li>• Performance monitoring</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass-morphism p-6 rounded-2xl shadow-lg card-hover border border-purple-200">
+                        <div class="text-3xl mb-4">📊</div>
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">ML & Data Science</h3>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li>• ML pipelines (Python/no-code)</li>
+                            <li>• Sentiment analysis & classification</li>
+                            <li>• Data visualization</li>
+                            <li>• Batch processing & analysis</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass-morphism p-6 rounded-2xl shadow-lg card-hover border border-purple-200">
+                        <div class="text-3xl mb-4">🛠️</div>
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">AI Tools & Platforms</h3>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li>• Dialogflow, Bot Framework</li>
+                            <li>• Hugging Face, Obviously AI</li>
+                            <li>• Python (scikit-learn, pandas)</li>
+                            <li>• Cloud AI APIs (AWS, GCP, Azure)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass-morphism p-6 rounded-2xl shadow-lg card-hover border border-purple-200">
+                        <div class="text-3xl mb-4">🏗️</div>
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">System Design</h3>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li>• End-to-end AI applications</li>
+                            <li>• RAG chatbots & accessibility tools</li>
+                            <li>• Scalable architectures</li>
+                            <li>• Data persistence & error handling</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass-morphism p-6 rounded-2xl shadow-lg card-hover border border-purple-200">
+                        <div class="text-3xl mb-4">⚖️</div>
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Ethics & Responsible AI</h3>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li>• Bias audits & mitigation</li>
+                            <li>• Fairness, privacy, accessibility</li>
+                            <li>• Ethical frameworks</li>
+                            <li>• Trustworthy AI principles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Tab -->
+        <div id="projects-content" class="tab-content hidden relative">
+            <div class="cyber-grid absolute inset-0 opacity-5"></div>
+            <div class="max-w-6xl mx-auto relative z-10">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">My Projects</h2>
+                
+                <!-- Add Project Button -->
+                <div class="text-center mb-12">
+                    <button onclick="showAddProjectForm()" class="bg-gradient-to-r from-ff6b6b to-4ecdc4 text-black px-8 py-4 rounded-2xl font-semibold text-lg hover:from-ff6b6b hover:to-45b7d1 transition-all duration-300 transform hover:scale-105 shadow-lg neon-glow">
+                        ➕ Add New Project
+                    </button>
+                </div>
+
+                <!-- Add Project Form (Hidden by default) -->
+                <div id="add-project-form" class="hidden mb-12">
+                    <div class="glass-morphism p-8 rounded-2xl shadow-lg border border-purple-200 max-w-2xl mx-auto">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800 text-center">Add New Project</h3>
+                        <form onsubmit="addProject(event)" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Project Icon (Emoji)</label>
+                                <input type="text" id="project-icon" placeholder="🚀" maxlength="2" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Project Title</label>
+                                <input type="text" id="project-title" placeholder="My Amazing Project" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                                <textarea id="project-description" rows="3" placeholder="Brief description of your project..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300" required></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Technologies (comma-separated)</label>
+                                <input type="text" id="project-technologies" placeholder="React, Node.js, MongoDB" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Project URL (Optional)</label>
+                                <input type="url" id="project-url" placeholder="https://github.com/username/project or https://myproject.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div class="flex space-x-4">
+                                <button type="submit" class="flex-1 bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-medium hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105">
+                                    ✅ Add Project
+                                </button>
+                                <button type="button" onclick="hideAddProjectForm()" class="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 rounded-lg font-medium hover:from-gray-700 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
+                                    ❌ Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Projects will be added here dynamically -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-projects" class="text-center py-16">
+                    <div class="text-6xl mb-6">📂</div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-600">No Projects Yet</h3>
+                    <p class="text-gray-500 mb-8">Start building your portfolio by adding your first project!</p>
+                    <button onclick="showAddProjectForm()" class="bg-gradient-to-r from-ff6b6b to-4ecdc4 text-white px-6 py-3 rounded-lg font-medium hover:from-ff6b6b hover:to-45b7d1 transition-all duration-300 transform hover:scale-105">
+                        Add Your First Project
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Tab -->
+        <div id="education-content" class="tab-content hidden">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Education</h2>
+                
+                <!-- Education Section -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-700">🎓 Academic Education</h3>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-start space-x-6">
+                            <div class="text-5xl">🎓</div>
+                            <div class="flex-1">
+                                <h4 class="text-2xl font-semibold mb-2 text-gray-800">Diploma in Information Technology</h4>
+                                <p class="text-lg text-purple-600 mb-3">Vaal University of Technology</p>
+                                <p class="text-gray-600">Comprehensive foundation in information systems, business analysis, database management, and analytical problem-solving methodologies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Training Section -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-700">🤖 Professional Training</h3>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-start space-x-6">
+                            <div class="text-5xl">🤖</div>
+                            <div class="flex-1">
+                                <h4 class="text-2xl font-semibold mb-2 text-gray-800">AI Bootcamp Certification</h4>
+                                <p class="text-lg text-purple-600 mb-3">CAPACITI</p>
+                                <p class="text-gray-600">Intensive hands-on training in artificial intelligence, machine learning, and practical AI application development. Completed multiple real-world projects using agile methodologies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Courses Section -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-700">📘 Courses Completed</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🧠</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">AI For Everyone</h4>
+                                    <p class="text-sm text-purple-600">deeplearning.ai</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🤖</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Introduction to AI</h4>
+                                    <p class="text-sm text-purple-600">IBM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">✨</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Introduction to Generative AI</h4>
+                                    <p class="text-sm text-purple-600">Google Cloud</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">💡</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">AI Essentials</h4>
+                                    <p class="text-sm text-purple-600">Intel</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🐍</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Python for Data Science, AI & Development</h4>
+                                    <p class="text-sm text-purple-600">IBM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">💬</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Building AI Powered Chatbots Without Programming</h4>
+                                    <p class="text-sm text-purple-600">IBM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🔤</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Generative AI with Large Language Models</h4>
+                                    <p class="text-sm text-purple-600">AWS & deeplearning.ai</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🌍</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">AI For Good Specialization</h4>
+                                    <p class="text-sm text-purple-600">deeplearning.ai</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">📊</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">AI Product Management Specialization</h4>
+                                    <p class="text-sm text-purple-600">Duke University</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">⚖️</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Introduction to Responsible AI</h4>
+                                    <p class="text-sm text-purple-600">Google Cloud</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🛡️</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Trustworthy AI: Managing Bias, Ethics, and Accountability</h4>
+                                    <p class="text-sm text-purple-600">University of Toronto</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">☁️</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Artificial Intelligence on Microsoft Azure</h4>
+                                    <p class="text-sm text-purple-600">Microsoft</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">💭</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">AI Foundations: Prompt Engineering with ChatGPT</h4>
+                                    <p class="text-sm text-purple-600">Arizona State University</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🎯</div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Machine Learning Specialization</h4>
+                                    <p class="text-sm text-purple-600">University of Washington</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Certifications Tab -->
+        <div id="certifications-content" class="tab-content hidden relative">
+            <div class="cyber-grid absolute inset-0 opacity-5"></div>
+            <div class="max-w-4xl mx-auto relative z-10">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Certificates</h2>
+                
+                <!-- Add Certification Button -->
+                <div class="text-center mb-12">
+                    <button onclick="showAddCertificationForm()" class="bg-gradient-to-r from-ff6b6b to-4ecdc4 text-black px-8 py-4 rounded-2xl font-semibold text-lg hover:from-ff6b6b hover:to-45b7d1 transition-all duration-300 transform hover:scale-105 shadow-lg neon-glow">
+                        📜 Add New Certificate
+                    </button>
+                </div>
+
+                <!-- Add Certification Form (Hidden by default) -->
+                <div id="add-certification-form" class="hidden mb-12">
+                    <div class="glass-morphism p-8 rounded-2xl shadow-lg border border-purple-200 max-w-2xl mx-auto">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800 text-center">Add New Certificate</h3>
+                        <form onsubmit="addCertification(event)" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Certificate Image</label>
+                                <div class="mb-4">
+                                    <div id="cert-picture-preview" class="w-32 h-32 mx-auto bg-gray-100 rounded-lg flex items-center justify-center text-4xl border-2 border-dashed border-gray-300 mb-3">
+                                        📜
+                                    </div>
+                                    <div class="text-center">
+                                        <input type="file" id="cert-picture" accept="image/*" class="hidden" onchange="handleCertPictureUpload(event)" required>
+                                        <label for="cert-picture" class="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600 transition-colors text-sm">
+                                            📷 Upload Picture
+                                        </label>
+                                        <p class="text-xs text-gray-500 mt-2">Upload your certificate image (required)</p>
+                                        <p class="text-xs text-gray-400 mt-1">Live preview will appear above</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Certification Icon (Emoji - if no picture)</label>
+                                <input type="text" id="cert-icon" placeholder="🏆" maxlength="2" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Certificate Name</label>
+                                <input type="text" id="cert-name" placeholder="AWS Cloud Practitioner" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Issuing Organization</label>
+                                <input type="text" id="cert-organization" placeholder="Amazon Web Services" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Issue Date</label>
+                                <input type="text" id="cert-date" placeholder="December 2024" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300" required>
+                            </div>
+                            <div class="flex space-x-4">
+                                <button type="submit" class="flex-1 bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-medium hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105">
+                                    ✅ Add Certificate
+                                </button>
+                                <button type="button" onclick="hideAddCertificationForm()" class="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 rounded-lg font-medium hover:from-gray-700 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
+                                    ❌ Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <h1>My Certifications</h1>
+
+   {% for cert in certifications %}
+  <li>
+    <a href="{{ url_for('static', filename=cert) }}" target="_blank">
+      {{ cert.split('/')[-1] }}  <!-- works now because cert is a string -->
+    </a>
+  </li>
+{% endfor %}
+
+
+        </ul>
+    {% else %}
+        <p>No certifications found.</p>
+    {% endif %}
+                <!-- Empty State -->
+                <div id="empty-certifications" class="text-center py-16">
+                    <div class="text-6xl mb-6">📜</div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-600">No Certificates Yet</h3>
+                    <p class="text-gray-500 mb-8">Upload your certificates to showcase your achievements!</p>
+                    <button onclick="showAddCertificationForm()" class="bg-gradient-to-r from-ff6b6b to-4ecdc4 text-white px-6 py-3 rounded-lg font-medium hover:from-ff6b6b hover:to-45b7d1 transition-all duration-300 transform hover:scale-105">
+                        Add Your First Certificate
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Resume Tab -->
+        <div id="resume-content" class="tab-content hidden relative">
+            <div class="cyber-grid absolute inset-0 opacity-5"></div>
+            <div class="max-w-4xl mx-auto relative z-10">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Resume</h2>
+                
+                <!-- Resume Upload Section -->
+                <div class="text-center mb-12">
+                    <div class="glass-morphism p-8 rounded-2xl shadow-lg border border-purple-200 max-w-2xl mx-auto">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">Upload Your Resume</h3>
+                        
+                        <!-- Resume Preview -->
+                        <div id="resume-preview-container" class="mb-6">
+                            <div id="resume-placeholder" class="w-full h-96 bg-gray-100 rounded-lg flex flex-col items-center justify-center text-gray-500 border-2 border-dashed border-gray-300">
+                                <div class="text-6xl mb-4">📄</div>
+                                <p class="text-lg font-medium mb-2">No resume uploaded yet</p>
+                                <p class="text-sm">Upload an image of your resume to display it here</p>
+                            </div>
+                            <img id="resume-image" class="w-full h-auto rounded-lg shadow-lg hidden" alt="Resume Preview">
+                        </div>
+                        
+                        <!-- Upload Controls -->
+                        <div class="space-y-4">
+                            <div>
+                                <input type="file" id="resume-upload" accept="image/*" class="hidden" onchange="handleResumeUpload(event)">
+                                <label for="resume-upload" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg cursor-pointer hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg neon-glow inline-block">
+                                    📷 Upload Resume Image
+                                </label>
+                            </div>
+                            <p class="text-sm text-gray-500">
+                                Upload a clear image of your resume (JPG, PNG, etc.)
+                            </p>
+                            <button id="remove-resume" onclick="removeResume()" class="bg-red-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-red-600 transition-all duration-300 hidden">
+                                🗑️ Remove Resume
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resume Actions -->
+                <div class="text-center">
+                    <div class="glass-morphism p-6 rounded-2xl shadow-lg border border-purple-200 max-w-md mx-auto">
+                        <h4 class="text-lg font-semibold mb-4 text-gray-800">Resume Actions</h4>
+                        <div class="space-y-3">
+                            <button onclick="downloadResume()" class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-medium hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105" disabled id="download-btn">
+                                💾 Download Resume
+                            </button>
+                            <button onclick="printResume()" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105" disabled id="print-btn">
+                                🖨️ Print Resume
+                            </button>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-3">Actions available after uploading resume</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Tab -->
+        <div id="contact-content" class="tab-content hidden relative">
+            <div class="cyber-grid absolute inset-0 opacity-5"></div>
+            <div class="data-stream" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="data-stream" style="left: 30%; animation-delay: 1s;"></div>
+            <div class="data-stream" style="left: 50%; animation-delay: 0.5s;"></div>
+            <div class="data-stream" style="left: 70%; animation-delay: 1.5s;"></div>
+            <div class="data-stream" style="left: 90%; animation-delay: 2s;"></div>
+            <div class="max-w-4xl mx-auto relative z-10">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Get In Touch</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div class="glass-morphism p-6 rounded-2xl shadow-lg card-hover border border-purple-200">
+                            <div class="flex items-center space-x-4">
+                                <div class="text-3xl">📧</div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800">Email</h3>
+                                    <a href="mailto:ngobeninorah98@gmail.com" class="text-purple-600 hover:text-purple-800 transition-colors">ngobeninorah98@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-morphism p-6 rounded-2xl shadow-lg card-hover border border-purple-200">
+                            <div class="flex items-center space-x-4">
+                                <div class="text-3xl">📱</div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800">Phone</h3>
+                                    <a href="tel:+27649637270" class="text-purple-600 hover:text-purple-800 transition-colors">+27 64 963 7270</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-morphism p-6 rounded-2xl shadow-lg card-hover border border-purple-200">
+                            <div class="flex items-center space-x-4">
+                                <div class="text-3xl">💼</div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800">LinkedIn</h3>
+                                    <a href="https://www.linkedin.com/in/norah-ngobeni-5324b0244" target="_blank" class="text-purple-600 hover:text-purple-800 transition-colors">Connect with me on LinkedIn</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-morphism p-6 rounded-2xl shadow-lg card-hover border border-purple-200">
+                            <div class="flex items-center space-x-4">
+                                <div class="text-3xl">💻</div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800">GitHub</h3>
+                                    <a href="https://github.com/gcinann98-star" target="_blank" class="text-purple-600 hover:text-purple-800 transition-colors">View my code repositories</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-morphism p-8 rounded-2xl shadow-lg border border-purple-200">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">Send a Message</h3>
+                        <form class="space-y-6" onsubmit="sendMessage(event)">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                <textarea rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Send Message 🚀
+                            </button>
+                        </form>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm text-gray-500">📧 Demo Contact Form - Messages will open in your email client</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12 mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-2">Norah Ngobeni</h3>
+                <p class="opacity-90">Exploring AI and Technology to Build Creative and Practical Solutions</p>
+            </div>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://www.linkedin.com/in/norah-ngobeni-5324b0244" target="_blank" class="hover:text-purple-200 transition-colors">LinkedIn</a>
+                <a href="https://github.com/gcinann98-star" target="_blank" class="hover:text-purple-200 transition-colors">GitHub</a>
+                <a href="mailto:ngobeninorah98@gmail.com" class="hover:text-purple-200 transition-colors">Email</a>
+            </div>
+            <p class="text-sm opacity-75">© 2025 Norah Ngobeni. Building the future with AI and creativity.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('tab-active');
+                tab.classList.add('hover:bg-gray-100');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName + '-content').classList.remove('hidden');
+            
+            // Add active class to selected tab
+            const activeTab = document.getElementById(tabName + '-tab');
+            activeTab.classList.add('tab-active');
+            activeTab.classList.remove('hover:bg-gray-100');
+        }
+        
+        function sendMessage(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            const name = formData.get('name') || form.querySelector('input[type="text"]').value;
+            const email = formData.get('email') || form.querySelector('input[type="email"]').value;
+            const subject = formData.get('subject') || form.querySelectorAll('input[type="text"]')[1].value;
+            const message = formData.get('message') || form.querySelector('textarea').value;
+            
+            const mailtoLink = `mailto:ngobeninorah98@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\nMessage:\n${message}`)}`;
+            
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Opening your email client to send the message! 📧');
+        }
+        
+
+        
+        function handleHeaderImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const headerImage = document.getElementById('header-image');
+                    const headerPlaceholder = document.getElementById('header-placeholder');
+                    
+                    headerImage.src = e.target.result;
+                    headerImage.classList.remove('hidden');
+                    headerPlaceholder.style.display = 'none';
+                    
+                    // Remove floating animation after upload
+                    const headerContainer = document.getElementById('header-picture-container');
+                    headerContainer.classList.remove('floating-icon');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profileImage = document.getElementById('profile-image');
+                    const profilePlaceholder = document.getElementById('profile-placeholder');
+                    const modalImage = document.getElementById('profile-modal-image');
+                    const modalPlaceholder = document.getElementById('profile-modal-placeholder');
+                    
+                    profileImage.src = e.target.result;
+                    profileImage.classList.remove('hidden');
+                    profilePlaceholder.style.display = 'none';
+                    
+                    // Remove floating animation after upload
+                    const container = document.getElementById('profile-picture-container');
+                    container.classList.remove('floating-icon');
+                    
+                    // Update modal image
+                    modalImage.src = e.target.result;
+                    modalImage.classList.remove('hidden');
+                    modalPlaceholder.classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function openProfileModal() {
+            const profileImage = document.getElementById('profile-image');
+            if (profileImage.src && !profileImage.classList.contains('hidden')) {
+                document.getElementById('profile-modal').classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        function closeProfileModal() {
+            document.getElementById('profile-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+        
+        // Project Management Functions
+        let projects = [];
+        
+        function showAddProjectForm() {
+            document.getElementById('add-project-form').classList.remove('hidden');
+            document.getElementById('project-icon').focus();
+        }
+        
+        function hideAddProjectForm() {
+            document.getElementById('add-project-form').classList.add('hidden');
+            // Clear form
+            document.getElementById('project-icon').value = '';
+            document.getElementById('project-title').value = '';
+            document.getElementById('project-description').value = '';
+            document.getElementById('project-technologies').value = '';
+            document.getElementById('project-url').value = '';
+        }
+        
+        function addProject(event) {
+            event.preventDefault();
+            
+            const icon = document.getElementById('project-icon').value;
+            const title = document.getElementById('project-title').value;
+            const description = document.getElementById('project-description').value;
+            const technologies = document.getElementById('project-technologies').value;
+            const url = document.getElementById('project-url').value;
+            
+            const project = {
+                id: Date.now(),
+                icon: icon,
+                title: title,
+                description: description,
+                technologies: technologies.split(',').map(tech => tech.trim()),
+                url: url
+            };
+            
+            projects.push(project);
+            renderProjects();
+            hideAddProjectForm();
+            
+            alert('Project added successfully! 🎉');
+        }
+        
+        function removeProject(projectId) {
+            if (confirm('Are you sure you want to remove this project?')) {
+                projects = projects.filter(project => project.id !== projectId);
+                renderProjects();
+                alert('Project removed successfully! 🗑️');
+            }
+        }
+        
+        function renderProjects() {
+            const projectsGrid = document.getElementById('projects-grid');
+            const emptyState = document.getElementById('empty-projects');
+            
+            if (projects.length === 0) {
+                projectsGrid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                projectsGrid.innerHTML = projects.map(project => `
+                    <div class="glass-morphism p-6 rounded-2xl shadow-lg project-card-3d border border-purple-200 relative">
+                        <button onclick="removeProject(${project.id})" class="absolute top-4 right-4 text-red-500 hover:text-red-700 text-xl font-bold">×</button>
+                        <div class="text-4xl mb-4">${project.icon}</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">${project.title}</h3>
+                        <p class="text-gray-700 mb-4">${project.description}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${project.technologies.map(tech => `
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">${tech}</span>
+                            `).join('')}
+                        </div>
+                        ${project.url ? `
+                            <a href="${project.url}" target="_blank" class="inline-flex items-center text-purple-600 hover:text-purple-800 text-sm font-medium transition-colors">
+                                🔗 View Project
+                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </a>
+                        ` : ''}
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Certification Management Functions
+        let certifications = [];
+        
+        function showAddCertificationForm() {
+            document.getElementById('add-certification-form').classList.remove('hidden');
+            document.getElementById('cert-icon').focus();
+        }
+        
+        function hideAddCertificationForm() {
+            document.getElementById('add-certification-form').classList.add('hidden');
+            // Clear form
+            document.getElementById('cert-icon').value = '';
+            document.getElementById('cert-name').value = '';
+            document.getElementById('cert-organization').value = '';
+            document.getElementById('cert-date').value = '';
+            document.getElementById('cert-picture').value = '';
+            // Reset picture preview
+            const preview = document.getElementById('cert-picture-preview');
+            preview.innerHTML = '📜';
+            preview.style.backgroundImage = '';
+            preview.classList.remove('bg-cover', 'bg-center');
+            preview.classList.add('bg-gray-100');
+        }
+        
+        function handleCertPictureUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('cert-picture-preview');
+                    preview.style.backgroundImage = `url(${e.target.result})`;
+                    preview.classList.add('bg-cover', 'bg-center');
+                    preview.classList.remove('bg-gray-100');
+                    preview.innerHTML = '';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        function addCertification(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('cert-name').value;
+            const organization = document.getElementById('cert-organization').value;
+            const date = document.getElementById('cert-date').value;
+            const pictureFile = document.getElementById('cert-picture').files[0];
+            
+            if (!pictureFile) {
+                alert('Please upload a certificate image! 📷');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const certification = {
+                    id: Date.now(),
+                    name: name,
+                    organization: organization,
+                    date: date,
+                    picture: e.target.result,
+                    verified: true // All certificates are verified
+                };
+                
+                certifications.push(certification);
+                renderCertifications();
+                hideAddCertificationForm();
+                alert('Certificate added successfully! 📜✅');
+            };
+            reader.readAsDataURL(pictureFile);
+        }
+        
+        function removeCertification(certId) {
+            if (confirm('Are you sure you want to remove this certification?')) {
+                certifications = certifications.filter(cert => cert.id !== certId);
+                renderCertifications();
+                alert('Certification removed successfully! 🗑️');
+            }
+        }
+        
+        function renderCertifications() {
+            const certificationsList = document.getElementById('certifications-list');
+            const emptyState = document.getElementById('empty-certifications');
+            
+            if (certifications.length === 0) {
+                certificationsList.innerHTML = '';
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                certificationsList.innerHTML = certifications.map(cert => `
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover relative border-l-4 border-green-500">
+                        <button onclick="removeCertification(${cert.id})" class="absolute top-4 right-4 text-red-500 hover:text-red-700 text-xl font-bold">×</button>
+                        ${cert.verified ? `
+                            <div class="absolute top-4 right-12 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center">
+                                ✅ Verified
+                            </div>
+                        ` : ''}
+                        <div class="flex items-start space-x-6">
+                            <div class="flex-shrink-0">
+                                <div class="w-32 h-32 rounded-lg bg-cover bg-center shadow-md border-2 border-gray-200" style="background-image: url(${cert.picture})"></div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-2xl font-semibold mb-2 text-gray-800">${cert.name}</h4>
+                                <p class="text-lg text-purple-600 mb-2">${cert.organization}</p>
+                                <p class="text-md text-gray-600 mb-3">Issued: ${cert.date}</p>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">📜 Certificate</span>
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">✅ Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+
+        
+        // Resume Management Functions
+        function handleResumeUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const resumeImage = document.getElementById('resume-image');
+                    const resumePlaceholder = document.getElementById('resume-placeholder');
+                    const removeBtn = document.getElementById('remove-resume');
+                    const downloadBtn = document.getElementById('download-btn');
+                    const printBtn = document.getElementById('print-btn');
+                    
+                    // Show image and hide placeholder
+                    resumeImage.src = e.target.result;
+                    resumeImage.classList.remove('hidden');
+                    resumePlaceholder.classList.add('hidden');
+                    
+                    // Enable buttons
+                    removeBtn.classList.remove('hidden');
+                    downloadBtn.disabled = false;
+                    printBtn.disabled = false;
+                    downloadBtn.classList.remove('opacity-50');
+                    printBtn.classList.remove('opacity-50');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        function removeResume() {
+            if (confirm('Are you sure you want to remove the resume?')) {
+                const resumeImage = document.getElementById('resume-image');
+                const resumePlaceholder = document.getElementById('resume-placeholder');
+                const removeBtn = document.getElementById('remove-resume');
+                const downloadBtn = document.getElementById('download-btn');
+                const printBtn = document.getElementById('print-btn');
+                const uploadInput = document.getElementById('resume-upload');
+                
+                // Hide image and show placeholder
+                resumeImage.classList.add('hidden');
+                resumeImage.src = '';
+                resumePlaceholder.classList.remove('hidden');
+                
+                // Disable buttons
+                removeBtn.classList.add('hidden');
+                downloadBtn.disabled = true;
+                printBtn.disabled = true;
+                downloadBtn.classList.add('opacity-50');
+                printBtn.classList.add('opacity-50');
+                
+                // Clear file input
+                uploadInput.value = '';
+                
+                alert('Resume removed successfully! 🗑️');
+            }
+        }
+        
+        function downloadResume() {
+            const resumeImage = document.getElementById('resume-image');
+            if (resumeImage.src) {
+                const link = document.createElement('a');
+                link.download = 'Norah_Ngobeni_Resume.png';
+                link.href = resumeImage.src;
+                link.click();
+                alert('Resume download started! 💾');
+            }
+        }
+        
+        function printResume() {
+            const resumeImage = document.getElementById('resume-image');
+            if (resumeImage.src) {
+                const printWindow = window.open('', '_blank');
+                printWindow.document.write(`
+                    <html>
+                        <head>
+                            <title>Norah Ngobeni - Resume</title>
+                            <style>
+                                body { margin: 0; padding: 20px; text-align: center; }
+                                img { max-width: 100%; height: auto; }
+                            </style>
+                        </head>
+                        <body>
+                            <img src="${resumeImage.src}" alt="Norah Ngobeni Resume">
+                        </body>
+                    </html>
+                `);
+                printWindow.document.close();
+                printWindow.print();
+            }
+        }
+
+        // Initialize with About tab active
+        document.addEventListener('DOMContentLoaded', function() {
+            showTab('about');
+            renderProjects(); // Initialize projects display
+            renderCertifications(); // Initialize certifications display
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97fe416a712973a9',t:'MTc1ODAwMzYwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
