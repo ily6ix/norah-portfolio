@@ -147,6 +147,11 @@
             100% { transform: rotate(360deg); }
         }
         
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+        }
+        
         .skill-orb:hover {
             transform: scale(1.1);
             box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
@@ -190,19 +195,13 @@
         
         .typing-animation {
             overflow: hidden;
-            border-right: 3px solid #ff6b6b;
             white-space: nowrap;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+            animation: typing 3s steps(40, end);
         }
         
         @keyframes typing {
             from { width: 0; }
             to { width: 100%; }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #ff6b6b; }
         }
     </style>
 </head>
@@ -225,19 +224,39 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center">
                 <div class="relative inline-block">
-                    <div id="header-picture-container" class="w-32 h-32 mx-auto mb-6 holographic rounded-full flex items-center justify-center text-6xl floating-icon neon-glow morphing-shape">
-                        <span id="header-placeholder"></span>
-                        <img id="header-image" class="w-full h-full rounded-full object-cover hidden" alt="Norah Ngobeni">
-                    </div>
-                    <div class="absolute bottom-2 right-2">
-                        <label for="header-upload" class="bg-white p-2 rounded-full shadow-lg cursor-pointer hover:bg-gray-50 transition-all duration-300 transform hover:scale-110">
-                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <div class="w-32 h-32 mx-auto mb-6 holographic rounded-full flex items-center justify-center floating-icon neon-glow morphing-shape relative overflow-hidden">
+                        <!-- AI Brain Icon with Neural Network Animation -->
+                        <div class="relative z-10">
+                            <svg class="w-20 h-20 text-white" viewBox="0 0 100 100" fill="currentColor">
+                                <!-- Brain outline -->
+                                <path d="M30 25c-8 0-15 7-15 15 0 3 1 6 2 8-3 2-5 6-5 10 0 8 7 15 15 15h5c2 6 8 10 15 10s13-4 15-10h8c8 0 15-7 15-15 0-4-2-8-5-10 1-2 2-5 2-8 0-8-7-15-15-15-3 0-6 1-8 2-2-6-8-10-14-10z" opacity="0.9"/>
+                                <!-- Neural nodes -->
+                                <circle cx="35" cy="35" r="2" class="animate-pulse"/>
+                                <circle cx="50" cy="30" r="2" class="animate-pulse" style="animation-delay: 0.5s"/>
+                                <circle cx="65" cy="35" r="2" class="animate-pulse" style="animation-delay: 1s"/>
+                                <circle cx="40" cy="50" r="2" class="animate-pulse" style="animation-delay: 1.5s"/>
+                                <circle cx="60" cy="50" r="2" class="animate-pulse" style="animation-delay: 2s"/>
+                                <circle cx="50" cy="65" r="2" class="animate-pulse" style="animation-delay: 0.3s"/>
+                                <!-- Neural connections -->
+                                <line x1="35" y1="35" x2="50" y2="30" stroke="currentColor" stroke-width="1" opacity="0.6" class="animate-pulse"/>
+                                <line x1="50" y1="30" x2="65" y2="35" stroke="currentColor" stroke-width="1" opacity="0.6" class="animate-pulse" style="animation-delay: 0.7s"/>
+                                <line x1="35" y1="35" x2="40" y2="50" stroke="currentColor" stroke-width="1" opacity="0.6" class="animate-pulse" style="animation-delay: 1.2s"/>
+                                <line x1="65" y1="35" x2="60" y2="50" stroke="currentColor" stroke-width="1" opacity="0.6" class="animate-pulse" style="animation-delay: 1.8s"/>
+                                <line x1="40" y1="50" x2="50" y2="65" stroke="currentColor" stroke-width="1" opacity="0.6" class="animate-pulse" style="animation-delay: 0.9s"/>
+                                <line x1="60" y1="50" x2="50" y2="65" stroke="currentColor" stroke-width="1" opacity="0.6" class="animate-pulse" style="animation-delay: 1.4s"/>
                             </svg>
-                        </label>
-                        <input type="file" id="header-upload" accept="image/*" class="hidden" onchange="handleHeaderImageUpload(event)">
+                        </div>
+                        <!-- Orbiting particles -->
+                        <div class="absolute inset-0">
+                            <div class="absolute w-2 h-2 bg-white rounded-full opacity-70" style="top: 20%; left: 80%; animation: orbit 4s linear infinite;"></div>
+                            <div class="absolute w-1 h-1 bg-white rounded-full opacity-50" style="top: 70%; left: 20%; animation: orbit 6s linear infinite reverse;"></div>
+                            <div class="absolute w-1.5 h-1.5 bg-white rounded-full opacity-60" style="top: 40%; left: 10%; animation: orbit 5s linear infinite;"></div>
+                        </div>
                     </div>
+                    <!-- Tech badges floating around -->
+                    <div class="absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-bold animate-bounce" style="animation-delay: 0.5s;">AI</div>
+                    <div class="absolute -bottom-2 -left-2 bg-gradient-to-r from-green-500 to-teal-600 text-white px-2 py-1 rounded-full text-xs font-bold animate-bounce" style="animation-delay: 1s;">ML</div>
+                    <div class="absolute top-1/2 -right-4 bg-gradient-to-r from-pink-500 to-red-600 text-white px-2 py-1 rounded-full text-xs font-bold animate-bounce" style="animation-delay: 1.5s;">Tech</div>
                 </div>
                 <h1 class="text-5xl font-bold mb-4 typing-animation">Hi, I'm Norah Ngobeni</h1>
                 <p class="text-xl mb-6 opacity-90">Exploring AI and Technology to Build Creative and Practical Solutions</p>
@@ -272,42 +291,78 @@
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">About Me</h2>
                 
-                <!-- Profile Picture Section -->
-                <div class="text-center mb-12">
-                    <div class="relative inline-block">
-                        <div id="profile-picture-container" class="w-48 h-48 mx-auto mb-6 holographic morphing-shape flex items-center justify-center text-6xl shadow-2xl neon-glow cursor-pointer" onclick="openProfileModal()">
-                            <span id="profile-placeholder"></span>
-                            <img id="profile-image" class="w-full h-full rounded-full object-cover hidden" alt="Norah Ngobeni">
-                        </div>
-                        <div class="absolute bottom-2 right-2">
-                            <label for="profile-upload" class="bg-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-gray-50 transition-all duration-300 transform hover:scale-110">
-                                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                </svg>
-                            </label>
-                            <input type="file" id="profile-upload" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
+
+
+
+
+
+
+                <!-- Picture Upload Section -->
+                <div class="mb-16">
+                    <div class="glass-morphism p-8 rounded-3xl shadow-xl border border-purple-200 relative overflow-hidden">
+                        <div class="text-center mb-8">
+                            <!-- Picture Display -->
+                            <div class="relative inline-block mb-6">
+                                <div id="about-picture-container" class="w-48 h-48 mx-auto relative floating-icon">
+                                    <div id="about-placeholder" class="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-4xl text-white shadow-2xl neon-glow morphing-shape">
+                                        👤
+                                    </div>
+                                    <img id="about-image" class="w-full h-full object-cover rounded-full shadow-2xl neon-glow hidden cursor-pointer" alt="About Me Picture" onclick="openAboutModal()">
+                                </div>
+                            </div>
+                            
+                            <!-- Upload Controls -->
+                            <div class="space-y-4">
+                                <div>
+                                    <input type="file" id="about-picture" accept="image/*" class="hidden" onchange="handleAboutImageUpload(event)">
+                                    <label for="about-picture" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-2xl font-semibold cursor-pointer hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg neon-glow inline-block">
+                                        NORAH NGOBENI
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
 
-                <!-- Fullscreen Profile Modal -->
-                <div id="profile-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
-                    <div class="relative max-w-4xl max-h-full">
-                        <button onclick="closeProfileModal()" class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 z-10 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center">×</button>
-                        <img id="profile-modal-image" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl" alt="Norah Ngobeni - Fullscreen">
-                        <div id="profile-modal-placeholder" class="w-96 h-96 bg-gray-800 rounded-lg flex items-center justify-center text-8xl"></div>
-                    </div>
-                </div>
-
-                <!-- Professional Summary -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg mb-12 card-hover">
-                    <div class="text-center">
-                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Professional Summary</h3>
-                        <p class="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
-                            I'm a motivated technology professional with a Diploma in Information Technology from the Vaal University of Technology. My studies provided me with a strong foundation in IT systems, problem-solving, and analytical thinking. I recently completed the AI Bootcamp with CAPACITI, gaining hands-on experience in building AI-powered tools including chatbots, content generators, sentiment analysis dashboards, and bias audits through agile teamwork. I'm passionate about using artificial intelligence and machine learning to solve real-world problems in education, healthcare, and accessibility. My goal is to grow as an AI/ML specialist and contribute to impactful projects that improve lives and communities.
-                        </p>
+                <!-- Professional Profile Section -->
+                <div class="mb-16">
+                    <div class="glass-morphism p-8 rounded-3xl shadow-xl border border-purple-200 relative overflow-hidden">
+                        <!-- Animated background elements -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-10 transform translate-x-16 -translate-y-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-pink-400 to-red-500 rounded-full opacity-10 transform -translate-x-12 translate-y-12"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-center mb-6">
+                                <div class="text-4xl mr-4">✨</div>
+                                <h3 class="text-3xl font-bold text-gray-800">Professional Summary</h3>
+                            </div>
+                            
+                            <div class="space-y-4 text-gray-700 leading-relaxed">
+                                <p class="text-lg">
+                                    I'm a <span class="font-semibold text-purple-600">motivated technology professional</span> with a Diploma in Information Technology from the Vaal University of Technology. My studies provided me with a strong foundation in IT systems, problem-solving, and analytical thinking.
+                                </p>
+                                
+                                <p class="text-lg">
+                                    I recently completed the <span class="font-semibold text-blue-600">AI Bootcamp with CAPACITI</span>, gaining hands-on experience in building AI-powered tools including chatbots, content generators, sentiment analysis dashboards, and bias audits through agile teamwork.
+                                </p>
+                                
+                                <p class="text-lg">
+                                    I'm passionate about using <span class="font-semibold text-green-600">artificial intelligence and machine learning</span> to solve real-world problems in education, healthcare, and accessibility.
+                                </p>
+                                
+                                <p class="text-lg">
+                                    My goal is to grow as an <span class="font-semibold text-red-600">AI/ML specialist</span> and contribute to impactful projects that improve lives and communities.
+                                </p>
+                            </div>
+                            
+                            <!-- Achievement badges -->
+                            <div class="flex flex-wrap justify-center gap-3 mt-6">
+                                <span class="px-4 py-2 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 rounded-full text-sm font-medium">🎓 IT Graduate</span>
+                                <span class="px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm font-medium">🤖 AI Certified</span>
+                                <span class="px-4 py-2 bg-gradient-to-r from-green-100 to-green-200 text-green-800 rounded-full text-sm font-medium">💡 Problem Solver</span>
+                                <span class="px-4 py-2 bg-gradient-to-r from-red-100 to-red-200 text-red-800 rounded-full text-sm font-medium">🎯 Goal-Oriented</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -670,6 +725,19 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Profile Picture Upload -->
+                        <div class="lg:col-span-1 text-center">
+                            <div class="relative inline-block">
+                                <div id="profile-picture-container" class="w-48 h-48 mx-auto mb-4 relative floating-icon">
+                                    <div id="profile-placeholder" class="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-4xl text-white shadow-2xl neon-glow morphing-shape">
+                                        👤
+                                    </div>
+                                    <img id="profile-image" class="w-full h-full object-cover rounded-full shadow-2xl neon-glow hidden cursor-pointer" alt="Norah Ngobeni" onclick="openProfileModal()">
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -739,91 +807,84 @@
                     </div>
                 </div>
 
-                <h1>My Certifications</h1>
+                <!-- Certificates List -->
+                <div id="certifications-list" class="space-y-8">
+                    <!-- Certificates will be added here dynamically -->
+                </div>
 
-   {% for cert in certifications %}
-  <li>
-    <a href="{{ url_for('static', filename=cert) }}" target="_blank">
-      {{ cert.split('/')[-1] }}  <!-- works now because cert is a string -->
+                <div class="glass-dark rounded-lg overflow-hidden shadow-lg p-4 flex flex-col items-center text-center">
+    <div class="text-6xl mb-4">🏆</div>
+    <h4 class="text-xl font-semibold text-white mb-2">Active Listening Enhancing Communication Skills.pdf</h4>
+    <p class="text-gray-300 mb-4">AI Essentials</p>
+    <a href="Portfolioo/Certifications/AI Essentials.pdf" target="_blank" class="cyber-btn w-full flex items-center justify-center space-x-2">
+      <span>📂</span><span>View Certificate</span>
     </a>
-  </li>
-{% endfor %}
+  </div> 
 
 
-        </ul>
-    {% else %}
-        <p>No certifications found.</p>
-    {% endif %}
-                <!-- Empty State -->
-                <div id="empty-certifications" class="text-center py-16">
-                    <div class="text-6xl mb-6">📜</div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-600">No Certificates Yet</h3>
-                    <p class="text-gray-500 mb-8">Upload your certificates to showcase your achievements!</p>
-                    <button onclick="showAddCertificationForm()" class="bg-gradient-to-r from-ff6b6b to-4ecdc4 text-white px-6 py-3 rounded-lg font-medium hover:from-ff6b6b hover:to-45b7d1 transition-all duration-300 transform hover:scale-105">
-                        Add Your First Certificate
-                    </button>
-                </div>
+  <div class="glass-dark rounded-lg overflow-hidden shadow-lg p-4 flex flex-col items-center text-center">
+    <div class="text-6xl mb-4">🏆</div>
+    <h4 class="text-xl font-semibold text-white mb-2">Active Listening Enhancing Communication Skills.pdf</h4>
+    <p class="text-gray-300 mb-4">AI For Everyone</p>
+    <a href="Portfolioo/Certifications/AI For Everyone.pdf" target="_blank" class="cyber-btn w-full flex items-center justify-center space-x-2">
+      <span>📂</span><span>View Certificate</span>
+    </a>
+  </div>   
+
+  <div class="glass-dark rounded-lg overflow-hidden shadow-lg p-4 flex flex-col items-center text-center">
+    <div class="text-6xl mb-4">🏆</div>
+    <h4 class="text-xl font-semibold text-white mb-2">Active Listening Enhancing Communication Skills.pdf</h4>
+    <p class="text-gray-300 mb-4">AI Foundations Prompt Engineering with ChatGPT</p>
+    <a href="Portfolioo/Certifications/AI Foundations Prompt Engineering with ChatGPT.pdf" target="_blank" class="cyber-btn w-full flex items-center justify-center space-x-2">
+      <span>📂</span><span>View Certificate</span>
+    </a>
+  </div> 
+
+  <div class="glass-dark rounded-lg overflow-hidden shadow-lg p-4 flex flex-col items-center text-center">
+    <div class="text-6xl mb-4">🏆</div>
+    <h4 class="text-xl font-semibold text-white mb-2">Active Listening Enhancing Communication Skills.pdf</h4>
+    <p class="text-gray-300 mb-4">Python for Data Science, AI & Development</p>
+    <a href="Portfolioo/Certifications/Python for Data Science, AI & Development.pdf" target="_blank" class="cyber-btn w-full flex items-center justify-center space-x-2">
+      <span>📂</span><span>View Certificate</span>
+    </a>
+  </div> 
+
+  <div class="glass-dark rounded-lg overflow-hidden shadow-lg p-4 flex flex-col items-center text-center">
+    <div class="text-6xl mb-4">🏆</div>
+    <h4 class="text-xl font-semibold text-white mb-2">Active Listening Enhancing Communication Skills.pdf</h4>
+    <p class="text-gray-300 mb-4">Introduction to Generative AI</p>
+    <a href="Portfolioo/Certifications/Introduction to Generative AI.pdf" target="_blank" class="cyber-btn w-full flex items-center justify-center space-x-2">
+      <span>📂</span><span>View Certificate</span>
+    </a>
+  </div> 
+
+<div class="glass-dark rounded-lg overflow-hidden shadow-lg p-4 flex flex-col items-center text-center">
+    <div class="text-6xl mb-4">🏆</div>
+    <h4 class="text-xl font-semibold text-white mb-2">Active Listening Enhancing Communication Skills.pdf</h4>
+    <p class="text-gray-300 mb-4">Trustworthy AI Managing Bias, Ethics, and Accountability</p>
+    <a href="Portfolioo/Certifications/Trustworthy AI Managing Bias, Ethics, and Accountability.pdf" target="_blank" class="cyber-btn w-full flex items-center justify-center space-x-2">
+      <span>📂</span><span>View Certificate</span>
+    </a>
+  </div> 
             </div>
         </div>
 
 
 
-        <!-- Resume Tab -->
-        <div id="resume-content" class="tab-content hidden relative">
-            <div class="cyber-grid absolute inset-0 opacity-5"></div>
-            <div class="max-w-4xl mx-auto relative z-10">
-                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Resume</h2>
-                
-                <!-- Resume Upload Section -->
-                <div class="text-center mb-12">
-                    <div class="glass-morphism p-8 rounded-2xl shadow-lg border border-purple-200 max-w-2xl mx-auto">
-                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">Upload Your Resume</h3>
-                        
-                        <!-- Resume Preview -->
-                        <div id="resume-preview-container" class="mb-6">
-                            <div id="resume-placeholder" class="w-full h-96 bg-gray-100 rounded-lg flex flex-col items-center justify-center text-gray-500 border-2 border-dashed border-gray-300">
-                                <div class="text-6xl mb-4">📄</div>
-                                <p class="text-lg font-medium mb-2">No resume uploaded yet</p>
-                                <p class="text-sm">Upload an image of your resume to display it here</p>
-                            </div>
-                            <img id="resume-image" class="w-full h-auto rounded-lg shadow-lg hidden" alt="Resume Preview">
-                        </div>
-                        
-                        <!-- Upload Controls -->
-                        <div class="space-y-4">
-                            <div>
-                                <input type="file" id="resume-upload" accept="image/*" class="hidden" onchange="handleResumeUpload(event)">
-                                <label for="resume-upload" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg cursor-pointer hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg neon-glow inline-block">
-                                    📷 Upload Resume Image
-                                </label>
-                            </div>
-                            <p class="text-sm text-gray-500">
-                                Upload a clear image of your resume (JPG, PNG, etc.)
-                            </p>
-                            <button id="remove-resume" onclick="removeResume()" class="bg-red-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-red-600 transition-all duration-300 hidden">
-                                🗑️ Remove Resume
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Resume Actions -->
-                <div class="text-center">
-                    <div class="glass-morphism p-6 rounded-2xl shadow-lg border border-purple-200 max-w-md mx-auto">
-                        <h4 class="text-lg font-semibold mb-4 text-gray-800">Resume Actions</h4>
-                        <div class="space-y-3">
-                            <button onclick="downloadResume()" class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-medium hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105" disabled id="download-btn">
-                                💾 Download Resume
-                            </button>
-                            <button onclick="printResume()" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105" disabled id="print-btn">
-                                🖨️ Print Resume
-                            </button>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-3">Actions available after uploading resume</p>
-                    </div>
+        <!-- Content -->
+<!-- Resume -->
+    <div id="resume-content" class="tab-content hidden">
+        <div class="max-w-4xl mx-auto py-12">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">My Resume</h2>
+           <style>
+            .container{padding: 60px;}
+        </style>        
+        <div class="container"> 
+<embed src="Norah Ngobeni.pdf"type="application/pdf" width="100%" height="400px" />
                 </div>
             </div>
-        </div>
+            </div>
+            </class>
 
         <!-- Contact Tab -->
         <div id="contact-content" class="tab-content hidden relative">
@@ -910,6 +971,14 @@
         </div>
     </main>
 
+    <!-- About Picture Modal -->
+    <div id="about-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="relative max-w-4xl max-h-full p-4">
+            <button onclick="closeAboutModal()" class="absolute top-2 right-2 text-white text-3xl font-bold hover:text-gray-300 z-10">×</button>
+            <img id="about-modal-image" class="max-w-full max-h-full rounded-lg shadow-2xl" alt="About Me Picture">
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="gradient-bg text-white py-12 mt-20">
         <div class="container mx-auto px-6 text-center">
@@ -993,12 +1062,13 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
+                    const imageData = e.target.result;
                     const profileImage = document.getElementById('profile-image');
                     const profilePlaceholder = document.getElementById('profile-placeholder');
                     const modalImage = document.getElementById('profile-modal-image');
                     const modalPlaceholder = document.getElementById('profile-modal-placeholder');
                     
-                    profileImage.src = e.target.result;
+                    profileImage.src = imageData;
                     profileImage.classList.remove('hidden');
                     profilePlaceholder.style.display = 'none';
                     
@@ -1007,11 +1077,92 @@
                     container.classList.remove('floating-icon');
                     
                     // Update modal image
-                    modalImage.src = e.target.result;
+                    modalImage.src = imageData;
                     modalImage.classList.remove('hidden');
                     modalPlaceholder.classList.add('hidden');
+                    
+                    // Save to localStorage to make it permanent
+                    localStorage.setItem('profilePicture', imageData);
                 };
                 reader.readAsDataURL(file);
+            }
+        }
+
+        function handleAboutImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageData = e.target.result;
+                    const aboutImage = document.getElementById('about-image');
+                    const aboutPlaceholder = document.getElementById('about-placeholder');
+                    const modalImage = document.getElementById('about-modal-image');
+                    
+                    aboutImage.src = imageData;
+                    aboutImage.classList.remove('hidden');
+                    aboutPlaceholder.style.display = 'none';
+                    
+                    // Update modal image
+                    modalImage.src = imageData;
+                    
+                    // Save to localStorage to make it permanent
+                    localStorage.setItem('aboutPicture', imageData);
+                    
+                    alert('Picture uploaded successfully! It will stay here permanently. 📸✨');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function openAboutModal() {
+            const aboutImage = document.getElementById('about-image');
+            if (aboutImage.src && !aboutImage.classList.contains('hidden')) {
+                document.getElementById('about-modal').classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeAboutModal() {
+            document.getElementById('about-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function loadSavedAboutPicture() {
+            const savedImage = localStorage.getItem('aboutPicture');
+            if (savedImage) {
+                const aboutImage = document.getElementById('about-image');
+                const aboutPlaceholder = document.getElementById('about-placeholder');
+                const modalImage = document.getElementById('about-modal-image');
+                
+                aboutImage.src = savedImage;
+                aboutImage.classList.remove('hidden');
+                aboutPlaceholder.style.display = 'none';
+                
+                // Update modal image
+                modalImage.src = savedImage;
+            }
+        }
+
+        function loadSavedProfilePicture() {
+            const savedImage = localStorage.getItem('profilePicture');
+            if (savedImage) {
+                const profileImage = document.getElementById('profile-image');
+                const profilePlaceholder = document.getElementById('profile-placeholder');
+                const modalImage = document.getElementById('profile-modal-image');
+                const modalPlaceholder = document.getElementById('profile-modal-placeholder');
+                
+                profileImage.src = savedImage;
+                profileImage.classList.remove('hidden');
+                profilePlaceholder.style.display = 'none';
+                
+                // Remove floating animation
+                const container = document.getElementById('profile-picture-container');
+                container.classList.remove('floating-icon');
+                
+                // Update modal image
+                modalImage.src = savedImage;
+                modalImage.classList.remove('hidden');
+                modalPlaceholder.classList.add('hidden');
             }
         }
 
@@ -1065,15 +1216,35 @@
             };
             
             projects.push(project);
+            saveProjects(); // Save to localStorage
             renderProjects();
             hideAddProjectForm();
             
             alert('Project added successfully! 🎉');
         }
+
+        function saveProjects() {
+            localStorage.setItem('projects', JSON.stringify(projects));
+        }
+
+        function loadSavedProjects() {
+            const savedProjects = localStorage.getItem('projects');
+            if (savedProjects) {
+                projects = JSON.parse(savedProjects);
+                renderProjects();
+            }
+        }
         
         function removeProject(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (project && project.permanent) {
+                alert('This is a permanent project and cannot be removed! 🔒');
+                return;
+            }
+            
             if (confirm('Are you sure you want to remove this project?')) {
                 projects = projects.filter(project => project.id !== projectId);
+                saveProjects(); // Save changes to localStorage
                 renderProjects();
                 alert('Project removed successfully! 🗑️');
             }
@@ -1090,7 +1261,13 @@
                 emptyState.classList.add('hidden');
                 projectsGrid.innerHTML = projects.map(project => `
                     <div class="glass-morphism p-6 rounded-2xl shadow-lg project-card-3d border border-purple-200 relative">
-                        <button onclick="removeProject(${project.id})" class="absolute top-4 right-4 text-red-500 hover:text-red-700 text-xl font-bold">×</button>
+                        ${project.permanent ? `
+                            <div class="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold flex items-center">
+                                🔒 Featured
+                            </div>
+                        ` : `
+                            <button onclick="removeProject(${project.id})" class="absolute top-4 right-4 text-red-500 hover:text-red-700 text-xl font-bold">×</button>
+                        `}
                         <div class="text-4xl mb-4">${project.icon}</div>
                         <h3 class="text-xl font-semibold mb-3 text-gray-800">${project.title}</h3>
                         <p class="text-gray-700 mb-4">${project.description}</p>
@@ -1176,16 +1353,30 @@
                 };
                 
                 certifications.push(certification);
+                saveCertifications(); // Save to localStorage
                 renderCertifications();
                 hideAddCertificationForm();
                 alert('Certificate added successfully! 📜✅');
             };
             reader.readAsDataURL(pictureFile);
         }
+
+        function saveCertifications() {
+            localStorage.setItem('certifications', JSON.stringify(certifications));
+        }
+
+        function loadSavedCertifications() {
+            const savedCertifications = localStorage.getItem('certifications');
+            if (savedCertifications) {
+                certifications = JSON.parse(savedCertifications);
+                renderCertifications();
+            }
+        }
         
         function removeCertification(certId) {
             if (confirm('Are you sure you want to remove this certification?')) {
                 certifications = certifications.filter(cert => cert.id !== certId);
+                saveCertifications(); // Save changes to localStorage
                 renderCertifications();
                 alert('Certification removed successfully! 🗑️');
             }
@@ -1235,6 +1426,7 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
+                    const imageData = e.target.result;
                     const resumeImage = document.getElementById('resume-image');
                     const resumePlaceholder = document.getElementById('resume-placeholder');
                     const removeBtn = document.getElementById('remove-resume');
@@ -1242,7 +1434,7 @@
                     const printBtn = document.getElementById('print-btn');
                     
                     // Show image and hide placeholder
-                    resumeImage.src = e.target.result;
+                    resumeImage.src = imageData;
                     resumeImage.classList.remove('hidden');
                     resumePlaceholder.classList.add('hidden');
                     
@@ -1252,8 +1444,34 @@
                     printBtn.disabled = false;
                     downloadBtn.classList.remove('opacity-50');
                     printBtn.classList.remove('opacity-50');
+                    
+                    // Save to localStorage to make it permanent
+                    localStorage.setItem('resumeImage', imageData);
                 };
                 reader.readAsDataURL(file);
+            }
+        }
+
+        function loadSavedResume() {
+            const savedResume = localStorage.getItem('resumeImage');
+            if (savedResume) {
+                const resumeImage = document.getElementById('resume-image');
+                const resumePlaceholder = document.getElementById('resume-placeholder');
+                const removeBtn = document.getElementById('remove-resume');
+                const downloadBtn = document.getElementById('download-btn');
+                const printBtn = document.getElementById('print-btn');
+                
+                // Show image and hide placeholder
+                resumeImage.src = savedResume;
+                resumeImage.classList.remove('hidden');
+                resumePlaceholder.classList.add('hidden');
+                
+                // Enable buttons
+                removeBtn.classList.remove('hidden');
+                downloadBtn.disabled = false;
+                printBtn.disabled = false;
+                downloadBtn.classList.remove('opacity-50');
+                printBtn.classList.remove('opacity-50');
             }
         }
         
@@ -1280,6 +1498,9 @@
                 
                 // Clear file input
                 uploadInput.value = '';
+                
+                // Remove from localStorage
+                localStorage.removeItem('resumeImage');
                 
                 alert('Resume removed successfully! 🗑️');
             }
@@ -1319,12 +1540,69 @@
             }
         }
 
+        // Initialize default projects - these are permanent and always present
+        function initializeDefaultProjects() {
+            // Define permanent projects that should always be present
+            const permanentProjects = [
+                {
+                    id: 1,
+                    icon: '🤖',
+                    title: 'AI Chatbot - SchoolHub',
+                    description: 'Interactive AI-powered chatbot designed to assist students and educators with academic queries and support.',
+                    technologies: ['AI', 'Chatbot', 'Natural Language Processing', 'Educational Technology'],
+                    url: 'https://schoolhub.ai/en-US/generate/chatbot/view/1df61b1d-845a-48e1-8cce-bf288e40de22',
+                    permanent: true
+                },
+                {
+                    id: 2,
+                    icon: '📄',
+                    title: 'AI Resume Builder',
+                    description: 'Intelligent resume building application that uses AI to help create professional, tailored resumes with smart suggestions.',
+                    technologies: ['AI', 'Resume Generation', 'Web Development', 'UI/UX Design', 'Smart Templates'],
+                    url: 'https://emoji-ruby-95721418.figma.site/',
+                    permanent: true
+                },
+                {
+                    id: 3,
+                    icon: '🤟',
+                    title: 'Sign Language Transcriber',
+                    description: 'AI-powered application that translates sign language gestures into text, making communication more accessible.',
+                    technologies: ['AI', 'Computer Vision', 'Machine Learning', 'Accessibility', 'Real-time Processing'],
+                    url: 'https://sign-language-transcriber.vercel.app/',
+                    permanent: true
+                }
+            ];
+            
+            // Load saved projects from localStorage
+            const savedProjects = localStorage.getItem('projects');
+            let userProjects = [];
+            if (savedProjects) {
+                userProjects = JSON.parse(savedProjects).filter(project => !project.permanent);
+            }
+            
+            // Combine permanent projects with user projects
+            projects = [...permanentProjects, ...userProjects];
+            saveProjects();
+        }
+
         // Initialize with About tab active
         document.addEventListener('DOMContentLoaded', function() {
             showTab('about');
-            renderProjects(); // Initialize projects display
-            renderCertifications(); // Initialize certifications display
+            
+            // Load all saved data
+            loadSavedProfilePicture();
+            loadSavedAboutPicture();
+            loadSavedProjects();
+            loadSavedCertifications();
+            loadSavedResume();
+            
+            // Initialize default projects if none exist
+            initializeDefaultProjects();
+            
+            // Initialize displays
+            renderProjects();
+            renderCertifications();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97fe416a712973a9',t:'MTc1ODAwMzYwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'980796d254dd1636',t:'MTc1ODEwMTQ3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
